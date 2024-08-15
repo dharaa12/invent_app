@@ -7,7 +7,7 @@ import { collection, doc, getDocs, query, setDoc, deleteDoc, getDoc } from "fire
 
 export default function Home() {
   const [inventory, setInventory] = useState([])
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [itemName, setItemName] = useState('')
 
   const updateInvetory = async () => {
@@ -70,6 +70,7 @@ export default function Home() {
       width="100vw" 
       height="100vh" 
       display="flex" 
+      flexDirection="column"
       justifyContent="center" 
       alignItems="center" 
       gap={2}
@@ -82,7 +83,7 @@ export default function Home() {
             position="absolute" 
             top="50%" 
             left="50%" 
-            transform="translate(-50%,-50%" 
+            //transform="translate(-50%,-50%" -- not getting the box in the middle
             width={400} 
             bgcolor="white"
             border="2px solid #000"
@@ -91,14 +92,73 @@ export default function Home() {
             display="flex"
             flexDirection="column"
             gap={3}
+            sx={{
+              transform: 'translate(-50%,-50%)',  
+            }}
           >
             <Typography variant="h6">Add Item</Typography>
             <Stack width="100%" direction="row" spacing={2}>
-              <TextField></TextField>
+              <TextField 
+                variant ='outlined' 
+                fullWidth 
+                value={itemName}
+                onChange={(e)=>{
+                  setItemName(e.target.value)
+                }}
+                />
+                <Button 
+                  variant="outlined" 
+                  onClick={() =>{
+                    addItem(itemName)
+                    setItemName('')
+                    handleClose()
+                  }}
+                >
+                  Add
+                </Button>
             </Stack>
           </Box>
         </Modal>
-        <Typography variant="h1" >Inventory Management</Typography>
+        <Button variant="container" onClick={()=>{
+          handleOpen()
+        }}>
+          Add New Item
+        </Button>
+        <Box border="1px solid #333">
+          <Box 
+            width="800px" 
+            height="100px" 
+            bgcolor="#ADD8E6" 
+            alignItems="center" 
+            display="flex"
+            justifyContent="center"
+            >
+              <Typography variant="h2" color="#333">
+                Inventory Items
+              </Typography>
+          </Box>
+        </Box>
+        <Stack 
+          width="800px"
+          height="300px"
+          spackiing={2}
+          overflow="auto"
+        >
+          {inventory.map(({name, quantity})=>{
+              <Box 
+                key={name} 
+                width="100%" 
+                minHeight="150px" 
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                bgcolor="#f0f0f0"
+                padding={5}
+              >
+                <Typography>{name}</Typography>
+              </Box>
+            })}
+        </Stack>
     </Box>
   )
 
