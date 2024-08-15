@@ -2,7 +2,7 @@
 import Image from "next/image";
 import {useState, useEffect} from 'react'
 import {firestore} from '@/firebase'
-import {Box, TextField, Typography, Stack, TextField, Modal,Button} from '@mui/material'
+import {Box, TextField, Typography, Stack, Modal,Button} from '@mui/material'
 import { collection, doc, getDocs, query, setDoc, deleteDoc, getDoc } from "firebase/firestore";
 
 export default function Home() {
