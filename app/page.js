@@ -2,8 +2,10 @@
 import Image from "next/image";
 import {useState, useEffect} from 'react'
 import {firestore} from '@/firebase'
-import {Box, TextField, Typography, Stack, Modal,Button} from '@mui/material'
-import { collection, doc, getDocs, query, setDoc, deleteDoc, getDoc } from "firebase/firestore";
+import {Box, TextField, Typography, Stack, Modal, Button} from '@mui/material'
+import { collection, doc, getDocs, query, setDoc, deleteDoc, getDoc } from 'firebase/firestore';
+
+
 
 export default function Home() {
   const [inventory, setInventory] = useState([])
@@ -69,10 +71,10 @@ export default function Home() {
     <Box 
       width="100vw" 
       height="100vh" 
-      display="flex" 
-      flexDirection="column"
-      justifyContent="center" 
-      alignItems="center" 
+      display={"flex"} 
+      flexDirection={"column"}
+      justifyContent={"center" }
+      alignItems={"center"} 
       gap={2}
       >
         <Modal 
@@ -133,7 +135,7 @@ export default function Home() {
             display="flex"
             justifyContent="center"
             >
-              <Typography variant="h2" color="#333">
+              <Typography variant="h2" color="#333" textAlign={'center'}>
                 Inventory Items
               </Typography>
           </Box>
@@ -153,13 +155,13 @@ export default function Home() {
                 alignItems="center"
                 justifyContent="space-between"
                 bgcolor="#f0f0f0"
-                padding={5}
+                paddingX={5}
               >
                 <Typography variant ='h3' color="#333" textAlign="center" >
                   {name.charAt(0).toUpperCase() + name.slice(1)}
                 </Typography>
                 <Typography variant ='h3' color="#333" textAlign="center" >
-                  {quantity}
+                  Quantity: {quantity}
                 </Typography>
                 <Button 
                   variant = "contained" 
