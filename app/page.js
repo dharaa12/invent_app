@@ -143,24 +143,24 @@ export default function Home() {
         <Stack 
           width="800px"
           height="300px"
-          spackiing={2}
+          spacing={2}
           overflow="auto"
         >
-          {inventory.map(({name, quantity})=>{
+          {inventory.map(({name, quantity})=>(
               <Box 
                 key={name} 
                 width="100%" 
                 minHeight="150px" 
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                bgcolor="#f0f0f0"
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                bgcolor={"#f0f0f0"}
                 paddingX={5}
               >
-                <Typography variant ='h3' color="#333" textAlign="center" >
+                <Typography variant ={'h3'} color={"#333"} textAlign={"center"} >
                   {name.charAt(0).toUpperCase() + name.slice(1)}
                 </Typography>
-                <Typography variant ='h3' color="#333" textAlign="center" >
+                <Typography variant ={'h3'} color={"#333"} textAlign={"center"} >
                   Quantity: {quantity}
                 </Typography>
                 <Button 
@@ -172,7 +172,7 @@ export default function Home() {
                   Remove
                 </Button>
               </Box>
-            })}
+            ))}
         </Stack>
     </Box>
   )
